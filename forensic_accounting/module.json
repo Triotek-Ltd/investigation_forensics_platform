@@ -1,0 +1,8 @@
+{
+  "id": "forensic_accounting",
+  "title": "Forensic Accounting",
+  "app_id": "investigation_forensics_platform",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

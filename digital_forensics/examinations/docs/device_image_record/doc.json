@@ -1,0 +1,27 @@
+{
+  "doc_key": "device_image_record",
+  "doc_title": "Device Image Record",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "digital_forensics",
+  "submodule_id": "examinations",
+  "app_id": "investigation_forensics_platform",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "platform"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "platform",
+    "app": "investigation_forensics_platform",
+    "module": "digital_forensics",
+    "submodule": "examinations",
+    "reference_doc_id": "device_image_record",
+    "evidence_gaps": [
+      "hashing schema",
+      "storage-retention rules"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "doc_key": "evidence_item",
+  "doc_title": "Evidence Item",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "digital_forensics",
+  "submodule_id": "evidence_registry",
+  "app_id": "investigation_forensics_platform",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "platform"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "platform",
+    "app": "investigation_forensics_platform",
+    "module": "digital_forensics",
+    "submodule": "evidence_registry",
+    "reference_doc_id": "evidence_item",
+    "evidence_gaps": [
+      "evidence classification",
+      "storage-chain policy"
+    ]
+  }
+}

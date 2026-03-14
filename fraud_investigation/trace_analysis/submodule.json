@@ -1,0 +1,8 @@
+{
+  "id": "trace_analysis",
+  "title": "Trace Analysis",
+  "app_id": "investigation_forensics_platform",
+  "module_id": "fraud_investigation",
+  "type": "submodule",
+  "status": "draft"
+}

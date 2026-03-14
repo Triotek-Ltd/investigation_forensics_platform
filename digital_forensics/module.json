@@ -1,0 +1,8 @@
+{
+  "id": "digital_forensics",
+  "title": "Digital Forensics",
+  "app_id": "investigation_forensics_platform",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

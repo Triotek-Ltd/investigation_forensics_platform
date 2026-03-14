@@ -1,0 +1,27 @@
+{
+  "doc_key": "fraud_case",
+  "doc_title": "Fraud Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "fraud_investigation",
+  "submodule_id": "fraud_cases",
+  "app_id": "investigation_forensics_platform",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "platform"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "platform",
+    "app": "investigation_forensics_platform",
+    "module": "fraud_investigation",
+    "submodule": "fraud_cases",
+    "reference_doc_id": "fraud_case",
+    "evidence_gaps": [
+      "case-type taxonomy",
+      "evidence standard"
+    ]
+  }
+}

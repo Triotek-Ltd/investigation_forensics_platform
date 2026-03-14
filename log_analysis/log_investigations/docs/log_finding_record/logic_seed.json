@@ -1,0 +1,101 @@
+{
+  "doc_id": "log_finding_record",
+  "doc_title": "Log Finding Record",
+  "archetype": "ledger",
+  "doc_kind": "ledger",
+  "actions": [
+    "record",
+    "review",
+    "accept",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "reviewed",
+      "accepted",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 4,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "posting_flow",
+      "supports_reconciliation": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "accepted",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "posting_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "posting_date": "posting_date"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "finding_code",
+      "source_search_case",
+      "finding_category"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "posting_date",
+      "workflow_state"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "accepted",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "record": null,
+      "review": "reviewed",
+      "accept": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {},
+  "related_docs": [
+    "log_search_case",
+    "fraud_case",
+    "investigation_case"
+  ],
+  "borrowed_fields": [
+    "search context from log_search_case"
+  ]
+}

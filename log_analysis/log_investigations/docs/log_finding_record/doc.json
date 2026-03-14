@@ -1,0 +1,27 @@
+{
+  "doc_key": "log_finding_record",
+  "doc_title": "Log Finding Record",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "log_analysis",
+  "submodule_id": "log_investigations",
+  "app_id": "investigation_forensics_platform",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "platform"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "platform",
+    "app": "investigation_forensics_platform",
+    "module": "log_analysis",
+    "submodule": "log_investigations",
+    "reference_doc_id": "log_finding_record",
+    "evidence_gaps": [
+      "finding taxonomy",
+      "evidence-linking rules"
+    ]
+  }
+}

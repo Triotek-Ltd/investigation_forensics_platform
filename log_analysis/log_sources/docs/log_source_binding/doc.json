@@ -1,0 +1,27 @@
+{
+  "doc_key": "log_source_binding",
+  "doc_title": "Log Source Binding",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "log_analysis",
+  "submodule_id": "log_sources",
+  "app_id": "investigation_forensics_platform",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "platform"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "platform",
+    "app": "investigation_forensics_platform",
+    "module": "log_analysis",
+    "submodule": "log_sources",
+    "reference_doc_id": "log_source_binding",
+    "evidence_gaps": [
+      "index/source hierarchy",
+      "retention-policy linkage"
+    ]
+  }
+}

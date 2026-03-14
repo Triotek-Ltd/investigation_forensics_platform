@@ -1,0 +1,112 @@
+{
+  "doc_id": "suspicious_pattern_alert",
+  "doc_title": "Suspicious Pattern Alert",
+  "archetype": "transaction",
+  "doc_kind": "transaction",
+  "actions": [
+    "create",
+    "triage",
+    "link_case",
+    "dismiss",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "raised",
+    "states": [
+      "raised",
+      "triaged",
+      "linked_to_case",
+      "dismissed",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 5,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "transaction_flow",
+      "supports_submission": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "raised",
+      "triaged",
+      "linked_to_case",
+      "dismissed",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "transaction_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "transaction_date": "transaction_date",
+      "party": "primary_party",
+      "currency": "currency_code",
+      "total_amount": "total_amount",
+      "generated_at": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "alert_code",
+      "source_pattern",
+      "subject_transaction_scope"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "transaction_date",
+      "party",
+      "total_amount",
+      "workflow_state"
+    ],
+    "initial_state": "raised",
+    "lifecycle_states": [
+      "raised",
+      "triaged",
+      "linked_to_case",
+      "dismissed",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "triage": null,
+      "link_case": null,
+      "dismiss": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {},
+  "related_docs": [
+    "fraud_case",
+    "anomaly_alert",
+    "fraud_alert"
+  ],
+  "borrowed_fields": [
+    "source signal or transaction context from linked alert records"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "compliance_audit_investigations",
+  "title": "Compliance Audit Investigations",
+  "app_id": "investigation_forensics_platform",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

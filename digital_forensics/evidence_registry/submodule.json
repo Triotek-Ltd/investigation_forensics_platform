@@ -1,0 +1,8 @@
+{
+  "id": "evidence_registry",
+  "title": "Evidence Registry",
+  "app_id": "investigation_forensics_platform",
+  "module_id": "digital_forensics",
+  "type": "submodule",
+  "status": "draft"
+}

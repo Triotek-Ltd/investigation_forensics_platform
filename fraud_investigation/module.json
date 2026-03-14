@@ -1,0 +1,8 @@
+{
+  "id": "fraud_investigation",
+  "title": "Fraud Investigation",
+  "app_id": "investigation_forensics_platform",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

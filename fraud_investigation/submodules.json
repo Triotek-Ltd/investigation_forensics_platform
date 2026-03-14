@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "fraud_cases",
+    "trace_analysis"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "log_investigations",
+    "log_sources"
+  ]
+}

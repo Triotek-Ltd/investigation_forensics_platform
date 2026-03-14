@@ -1,0 +1,8 @@
+{
+  "id": "log_sources",
+  "title": "Log Sources",
+  "app_id": "investigation_forensics_platform",
+  "module_id": "log_analysis",
+  "type": "submodule",
+  "status": "draft"
+}

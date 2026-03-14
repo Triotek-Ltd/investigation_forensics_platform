@@ -1,0 +1,8 @@
+{
+  "id": "remediation_tracking",
+  "title": "Remediation Tracking",
+  "app_id": "investigation_forensics_platform",
+  "module_id": "compliance_audit_investigations",
+  "type": "submodule",
+  "status": "draft"
+}

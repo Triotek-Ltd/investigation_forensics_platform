@@ -1,0 +1,27 @@
+{
+  "doc_key": "asset_trace_case",
+  "doc_title": "Asset Trace Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "forensic_accounting",
+  "submodule_id": "asset_tracing",
+  "app_id": "investigation_forensics_platform",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "platform"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "platform",
+    "app": "investigation_forensics_platform",
+    "module": "forensic_accounting",
+    "submodule": "asset_tracing",
+    "reference_doc_id": "asset_trace_case",
+    "evidence_gaps": [
+      "trace-source hierarchy",
+      "asset-category taxonomy"
+    ]
+  }
+}

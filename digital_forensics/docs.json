@@ -1,0 +1,8 @@
+{
+  "docs": [
+    "chain_of_custody_event",
+    "evidence_item",
+    "device_image_record",
+    "forensic_examination"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "investigation_cases",
+    "remediation_tracking"
+  ]
+}

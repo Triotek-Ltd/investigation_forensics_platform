@@ -1,0 +1,8 @@
+{
+  "id": "asset_tracing",
+  "title": "Asset Tracing",
+  "app_id": "investigation_forensics_platform",
+  "module_id": "forensic_accounting",
+  "type": "submodule",
+  "status": "draft"
+}

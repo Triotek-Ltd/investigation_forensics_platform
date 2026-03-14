@@ -1,0 +1,9 @@
+{
+  "modules": [
+    "compliance_audit_investigations",
+    "digital_forensics",
+    "forensic_accounting",
+    "fraud_investigation",
+    "log_analysis"
+  ]
+}

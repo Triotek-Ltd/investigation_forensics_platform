@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "evidence_registry",
+    "examinations"
+  ]
+}
