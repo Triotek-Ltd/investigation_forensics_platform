@@ -52,7 +52,9 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
-      "event_time": "schedule_marker"
+      "event_time": "schedule_marker",
+      "related_evidence_item": "relation_collection",
+      "related_forensic_examination": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -82,7 +84,36 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "evidence_item",
+        "forensic_examination"
+      ],
+      "borrowed_fields": [
+        "evidence identity from evidence_item"
+      ],
+      "inferred_roles": [
+        "auditor"
+      ]
+    },
+    "actors": [
+      "auditor"
+    ],
+    "action_actors": {
+      "record": [
+        "auditor"
+      ],
+      "review": [
+        "auditor"
+      ],
+      "archive": [
+        "auditor"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "evidence_item",
     "forensic_examination"

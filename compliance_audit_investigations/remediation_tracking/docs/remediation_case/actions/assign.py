@@ -8,7 +8,7 @@ ACTION_ID = "assign"
 ACTION_RULE = {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': 'in_progress'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['investigation_case', 'investigation_report', 'corrective_action_plan'], 'borrowed_fields': ['findings/recommendations from linked case or report'], 'inferred_roles': ['auditor', 'compliance officer', 'case owner']}, 'actors': ['auditor', 'compliance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'assign': ['auditor'], 'track': ['auditor'], 'verify': ['auditor'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_assign(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

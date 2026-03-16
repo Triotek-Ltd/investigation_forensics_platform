@@ -8,7 +8,7 @@ ACTION_ID = "triage"
 ACTION_RULE = {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['transaction_trace_record', 'suspicious_pattern_alert', 'fraud_alert', 'chargeback_case'], 'borrowed_fields': ['source alert/transaction context from linked fraud/payment docs'], 'inferred_roles': ['auditor', 'finance officer', 'case owner']}, 'actors': ['auditor', 'finance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'assign': ['auditor'], 'confirm': ['finance officer'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_triage(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

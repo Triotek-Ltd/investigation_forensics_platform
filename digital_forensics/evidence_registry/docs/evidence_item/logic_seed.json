@@ -57,7 +57,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "collected_at": "schedule_marker"
+      "collected_at": "schedule_marker",
+      "related_chain_of_custody_event": "relation_collection",
+      "related_forensic_examination": "relation_collection",
+      "related_device_image_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -92,7 +95,34 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "chain_of_custody_event",
+        "forensic_examination",
+        "device_image_record"
+      ],
+      "borrowed_fields": [
+        "source-system or device context from integration/platform docs"
+      ],
+      "inferred_roles": [
+        "auditor"
+      ]
+    },
+    "actors": [
+      "auditor"
+    ],
+    "action_actors": {
+      "create": [
+        "auditor"
+      ],
+      "archive": [
+        "auditor"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "chain_of_custody_event",
     "forensic_examination",

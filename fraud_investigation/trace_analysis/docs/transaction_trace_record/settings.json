@@ -33,7 +33,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_fraud_case",
+      "doc_id": "fraud_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_payment_log_entry",
+      "doc_id": "payment_log_entry",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_ledger_posting",
+      "doc_id": "ledger_posting",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_inventory_movement",
+      "doc_id": "inventory_movement",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -41,7 +66,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "fraud_case",
+      "payment_log_entry",
+      "ledger_posting",
+      "inventory_movement"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -62,6 +92,43 @@
   "runtime_hints": {
     "doc_key": "transaction_trace_record",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "fraud_case",
+          "payment_log_entry",
+          "ledger_posting",
+          "inventory_movement"
+        ],
+        "borrowed_fields": [
+          "source transaction context from linked records"
+        ],
+        "inferred_roles": [
+          "auditor",
+          "finance officer",
+          "operations coordinator",
+          "case owner"
+        ]
+      },
+      "actors": [
+        "auditor",
+        "finance officer",
+        "operations coordinator",
+        "case owner"
+      ],
+      "action_actors": {
+        "record": [
+          "auditor"
+        ],
+        "review": [
+          "auditor"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

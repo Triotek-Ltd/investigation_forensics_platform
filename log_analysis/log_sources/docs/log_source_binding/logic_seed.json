@@ -55,7 +55,9 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "active_status": "status_flag"
+      "active_status": "status_flag",
+      "related_log_search_case": "relation_collection",
+      "related_log_finding_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -89,7 +91,39 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "log_search_case",
+        "log_finding_record"
+      ],
+      "borrowed_fields": [
+        "source-system metadata from integration/operations platforms where linked"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "verify": [
+        "case owner"
+      ],
+      "activate": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "log_search_case",
     "log_finding_record"

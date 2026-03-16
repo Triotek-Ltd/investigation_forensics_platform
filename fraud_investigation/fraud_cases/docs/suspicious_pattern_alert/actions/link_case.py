@@ -8,7 +8,7 @@ ACTION_ID = "link_case"
 ACTION_RULE = {'allowed_in_states': ['raised', 'triaged', 'linked_to_case', 'dismissed'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['fraud_case', 'anomaly_alert', 'fraud_alert'], 'borrowed_fields': ['source signal or transaction context from linked alert records'], 'inferred_roles': ['auditor', 'case owner']}, 'actors': ['auditor', 'case owner'], 'action_actors': {'create': ['auditor'], 'archive': ['case owner']}}
 
 def handle_link_case(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

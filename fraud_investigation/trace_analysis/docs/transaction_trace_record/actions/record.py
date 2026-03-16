@@ -8,7 +8,7 @@ ACTION_ID = "record"
 ACTION_RULE = {'allowed_in_states': ['active'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['fraud_case', 'payment_log_entry', 'ledger_posting', 'inventory_movement'], 'borrowed_fields': ['source transaction context from linked records'], 'inferred_roles': ['auditor', 'finance officer', 'operations coordinator', 'case owner']}, 'actors': ['auditor', 'finance officer', 'operations coordinator', 'case owner'], 'action_actors': {'record': ['auditor'], 'review': ['auditor'], 'archive': ['case owner']}}
 
 def handle_record(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

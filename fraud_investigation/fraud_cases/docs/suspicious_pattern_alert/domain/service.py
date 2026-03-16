@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'transaction_flow', 'supports_submission': True}, 'reporting_profile': {'supports_snapshots': True, 'supports_outputs': True}, 'integration_profile': {'external_sync_enabled': True, 'tracks_external_refs': True}, 'lifecycle_states': ['raised', 'triaged', 'linked_to_case', 'dismissed', 'archived'], 'is_transactional': True}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state', 'transaction_date'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'transaction_date': 'transaction_date', 'party': 'primary_party', 'currency': 'currency_code', 'total_amount': 'total_amount', 'generated_at': 'schedule_marker'}, 'search_fields': ['title', 'reference_no', 'description', 'alert_code', 'source_pattern', 'subject_transaction_scope'], 'list_columns': ['title', 'reference_no', 'transaction_date', 'party', 'total_amount', 'workflow_state'], 'initial_state': 'raised', 'lifecycle_states': ['raised', 'triaged', 'linked_to_case', 'dismissed', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'triage': None, 'link_case': None, 'dismiss': None, 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state', 'transaction_date'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'transaction_date': 'transaction_date', 'party': 'primary_party', 'currency': 'currency_code', 'total_amount': 'total_amount', 'generated_at': 'schedule_marker', 'related_fraud_case': 'relation_collection', 'related_anomaly_alert': 'relation_collection', 'related_fraud_alert': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'alert_code', 'source_pattern', 'subject_transaction_scope'], 'list_columns': ['title', 'reference_no', 'transaction_date', 'party', 'total_amount', 'workflow_state'], 'initial_state': 'raised', 'lifecycle_states': ['raised', 'triaged', 'linked_to_case', 'dismissed', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'triage': None, 'link_case': None, 'dismiss': None, 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['fraud_case', 'anomaly_alert', 'fraud_alert'], 'borrowed_fields': ['source signal or transaction context from linked alert records'], 'inferred_roles': ['auditor', 'case owner']}, 'actors': ['auditor', 'case owner'], 'action_actors': {'create': ['auditor'], 'archive': ['case owner']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': [], 'related_docs': ['fraud_case', 'anomaly_alert', 'fraud_alert'], 'action_targets': {'create': None, 'triage': None, 'link_case': None, 'dismiss': None, 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "suspicious_pattern_alert"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

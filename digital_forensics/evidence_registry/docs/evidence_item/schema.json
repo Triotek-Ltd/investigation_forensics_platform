@@ -262,6 +262,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_chain_of_custody_event",
+      "label": "Related Chain Of Custody Event",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "chain_of_custody_event",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_forensic_examination",
+      "label": "Related Forensic Examination",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "forensic_examination",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_device_image_record",
+      "label": "Related Device Image Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "device_image_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -285,7 +357,11 @@
       "collected_by",
       "integrity_state"
     ],
-    "relations": [],
+    "relations": [
+      "related_chain_of_custody_event",
+      "related_forensic_examination",
+      "related_device_image_record"
+    ],
     "amounts": [],
     "dates": [
       "collected_at"
@@ -380,16 +456,21 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
-        "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "create",
+        "collect",
+        "store",
+        "transfer",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "auditor",
+      "actions": [
+        "view",
+        "list",
+        "create",
         "archive"
       ]
     }

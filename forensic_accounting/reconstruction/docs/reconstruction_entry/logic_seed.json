@@ -58,7 +58,10 @@
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
       "event_date": "schedule_marker",
-      "reconstructed_amount": "monetary_value"
+      "reconstructed_amount": "monetary_value",
+      "related_asset_trace_case": "relation_collection",
+      "related_forensic_ledger_review": "relation_collection",
+      "related_ledger_posting": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -91,7 +94,42 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "asset_trace_case",
+        "forensic_ledger_review",
+        "ledger_posting"
+      ],
+      "borrowed_fields": [
+        "trace context from asset_trace_case",
+        "account refs from ledger_posting"
+      ],
+      "inferred_roles": [
+        "auditor",
+        "finance officer",
+        "case owner"
+      ]
+    },
+    "actors": [
+      "auditor",
+      "finance officer",
+      "case owner"
+    ],
+    "action_actors": {
+      "record": [
+        "auditor"
+      ],
+      "review": [
+        "auditor"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "asset_trace_case",
     "forensic_ledger_review",

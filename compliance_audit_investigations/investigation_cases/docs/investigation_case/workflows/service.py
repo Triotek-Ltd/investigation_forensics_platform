@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': None}, 'investigate': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': None}, 'substantiate': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': None}, 'dismiss': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': None}, 'close': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'assigned', 'investigating', 'substantiated', 'unsubstantiated'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['investigation_interview_record', 'investigation_report', 'remediation_case', 'audit_engagement'], 'borrowed_fields': ['source allegation or audit context from linked records'], 'inferred_roles': ['auditor', 'compliance officer', 'case owner']}, 'actors': ['auditor', 'compliance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'assign': ['auditor'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

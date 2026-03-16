@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['raised', 'triaged', 'linked_to_case', 'dismissed'], 'transitions_to': None}, 'triage': {'allowed_in_states': ['raised', 'triaged', 'linked_to_case', 'dismissed'], 'transitions_to': None}, 'link_case': {'allowed_in_states': ['raised', 'triaged', 'linked_to_case', 'dismissed'], 'transitions_to': None}, 'dismiss': {'allowed_in_states': ['raised', 'triaged', 'linked_to_case', 'dismissed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['raised', 'triaged', 'linked_to_case', 'dismissed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['fraud_case', 'anomaly_alert', 'fraud_alert'], 'borrowed_fields': ['source signal or transaction context from linked alert records'], 'inferred_roles': ['auditor', 'case owner']}, 'actors': ['auditor', 'case owner'], 'action_actors': {'create': ['auditor'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

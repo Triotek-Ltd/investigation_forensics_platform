@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['created', 'verified', 'active'], 'transitions_to': None}, 'verify': {'allowed_in_states': ['created', 'verified', 'active'], 'transitions_to': None}, 'mount': {'allowed_in_states': ['created', 'verified', 'active'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['created', 'verified', 'active'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['evidence_item', 'forensic_examination', 'chain_of_custody_event'], 'borrowed_fields': ['source evidence context from evidence_item'], 'inferred_roles': ['auditor']}, 'actors': ['auditor'], 'action_actors': {'create': ['auditor'], 'verify': ['auditor'], 'archive': ['auditor']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

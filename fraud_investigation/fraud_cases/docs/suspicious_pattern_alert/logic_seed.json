@@ -63,7 +63,10 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "generated_at": "schedule_marker"
+      "generated_at": "schedule_marker",
+      "related_fraud_case": "relation_collection",
+      "related_anomaly_alert": "relation_collection",
+      "related_fraud_alert": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -100,7 +103,36 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "fraud_case",
+        "anomaly_alert",
+        "fraud_alert"
+      ],
+      "borrowed_fields": [
+        "source signal or transaction context from linked alert records"
+      ],
+      "inferred_roles": [
+        "auditor",
+        "case owner"
+      ]
+    },
+    "actors": [
+      "auditor",
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "auditor"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "fraud_case",
     "anomaly_alert",

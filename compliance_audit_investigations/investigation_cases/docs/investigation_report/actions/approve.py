@@ -8,7 +8,7 @@ ACTION_ID = "approve"
 ACTION_RULE = {'allowed_in_states': ['draft', 'reviewed', 'approved', 'issued'], 'transitions_to': 'approved'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['investigation_case', 'investigation_interview_record', 'remediation_case'], 'borrowed_fields': ['case context', 'findings from linked records'], 'inferred_roles': ['auditor', 'compliance officer', 'case owner']}, 'actors': ['auditor', 'compliance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'review': ['auditor'], 'approve': ['compliance officer'], 'issue': ['case owner'], 'archive': ['case owner']}}
 
 def handle_approve(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'investigating', 'traced', 'unresolved'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'investigating', 'traced', 'unresolved'], 'transitions_to': None}, 'trace': {'allowed_in_states': ['opened', 'investigating', 'traced', 'unresolved'], 'transitions_to': None}, 'review': {'allowed_in_states': ['opened', 'investigating', 'traced', 'unresolved'], 'transitions_to': None}, 'close': {'allowed_in_states': ['opened', 'investigating', 'traced', 'unresolved'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'investigating', 'traced', 'unresolved'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['reconstruction_entry', 'forensic_ledger_review', 'fraud_case'], 'borrowed_fields': ['source-case context from fraud_case or investigation_case'], 'inferred_roles': ['auditor', 'finance officer', 'case owner']}, 'actors': ['auditor', 'finance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'assign': ['auditor'], 'review': ['auditor'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

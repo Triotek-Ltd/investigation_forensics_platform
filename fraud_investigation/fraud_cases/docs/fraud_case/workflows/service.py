@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': None}, 'triage': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': None}, 'investigate': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': None}, 'confirm': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': 'confirmed'}, 'dismiss': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'triaged', 'investigating', 'confirmed', 'dismissed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['transaction_trace_record', 'suspicious_pattern_alert', 'fraud_alert', 'chargeback_case'], 'borrowed_fields': ['source alert/transaction context from linked fraud/payment docs'], 'inferred_roles': ['auditor', 'finance officer', 'case owner']}, 'actors': ['auditor', 'finance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'assign': ['auditor'], 'confirm': ['finance officer'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

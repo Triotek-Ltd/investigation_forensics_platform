@@ -56,7 +56,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "posting_date": "posting_date"
+      "posting_date": "posting_date",
+      "related_log_search_case": "relation_collection",
+      "related_fraud_case": "relation_collection",
+      "related_investigation_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -89,7 +92,39 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "log_search_case",
+        "fraud_case",
+        "investigation_case"
+      ],
+      "borrowed_fields": [
+        "search context from log_search_case"
+      ],
+      "inferred_roles": [
+        "auditor",
+        "case owner"
+      ]
+    },
+    "actors": [
+      "auditor",
+      "case owner"
+    ],
+    "action_actors": {
+      "record": [
+        "auditor"
+      ],
+      "review": [
+        "auditor"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "log_search_case",
     "fraud_case",

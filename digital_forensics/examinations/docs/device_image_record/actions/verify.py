@@ -8,7 +8,7 @@ ACTION_ID = "verify"
 ACTION_RULE = {'allowed_in_states': ['created', 'verified', 'active'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['evidence_item', 'forensic_examination', 'chain_of_custody_event'], 'borrowed_fields': ['source evidence context from evidence_item'], 'inferred_roles': ['auditor']}, 'actors': ['auditor'], 'action_actors': {'create': ['auditor'], 'verify': ['auditor'], 'archive': ['auditor']}}
 
 def handle_verify(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

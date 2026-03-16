@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['collected', 'stored', 'examined', 'transferred'], 'transitions_to': None}, 'collect': {'allowed_in_states': ['collected', 'stored', 'examined', 'transferred'], 'transitions_to': None}, 'store': {'allowed_in_states': ['collected', 'stored', 'examined', 'transferred'], 'transitions_to': None}, 'transfer': {'allowed_in_states': ['collected', 'stored', 'examined', 'transferred'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['collected', 'stored', 'examined', 'transferred'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['chain_of_custody_event', 'forensic_examination', 'device_image_record'], 'borrowed_fields': ['source-system or device context from integration/platform docs'], 'inferred_roles': ['auditor']}, 'actors': ['auditor'], 'action_actors': {'create': ['auditor'], 'archive': ['auditor']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

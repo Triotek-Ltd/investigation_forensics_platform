@@ -30,7 +30,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_fraud_case",
+      "doc_id": "fraud_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_anomaly_alert",
+      "doc_id": "anomaly_alert",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_fraud_alert",
+      "doc_id": "fraud_alert",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -38,7 +57,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "fraud_case",
+      "anomaly_alert",
+      "fraud_alert"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -59,6 +82,35 @@
   "runtime_hints": {
     "doc_key": "suspicious_pattern_alert",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "fraud_case",
+          "anomaly_alert",
+          "fraud_alert"
+        ],
+        "borrowed_fields": [
+          "source signal or transaction context from linked alert records"
+        ],
+        "inferred_roles": [
+          "auditor",
+          "case owner"
+        ]
+      },
+      "actors": [
+        "auditor",
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "auditor"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

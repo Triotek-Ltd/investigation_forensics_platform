@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': 'in_progress'}, 'track': {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': None}, 'verify': {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': None}, 'close': {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'verified'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['investigation_case', 'investigation_report', 'corrective_action_plan'], 'borrowed_fields': ['findings/recommendations from linked case or report'], 'inferred_roles': ['auditor', 'compliance officer', 'case owner']}, 'actors': ['auditor', 'compliance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'assign': ['auditor'], 'track': ['auditor'], 'verify': ['auditor'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

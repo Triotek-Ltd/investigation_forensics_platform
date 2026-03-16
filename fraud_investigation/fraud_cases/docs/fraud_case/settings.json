@@ -33,7 +33,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_transaction_trace_record",
+      "doc_id": "transaction_trace_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_suspicious_pattern_alert",
+      "doc_id": "suspicious_pattern_alert",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_fraud_alert",
+      "doc_id": "fraud_alert",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_chargeback_case",
+      "doc_id": "chargeback_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -41,7 +66,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -62,6 +92,47 @@
   "runtime_hints": {
     "doc_key": "fraud_case",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "transaction_trace_record",
+          "suspicious_pattern_alert",
+          "fraud_alert",
+          "chargeback_case"
+        ],
+        "borrowed_fields": [
+          "source alert/transaction context from linked fraud/payment docs"
+        ],
+        "inferred_roles": [
+          "auditor",
+          "finance officer",
+          "case owner"
+        ]
+      },
+      "actors": [
+        "auditor",
+        "finance officer",
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "auditor"
+        ],
+        "assign": [
+          "auditor"
+        ],
+        "confirm": [
+          "finance officer"
+        ],
+        "close": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

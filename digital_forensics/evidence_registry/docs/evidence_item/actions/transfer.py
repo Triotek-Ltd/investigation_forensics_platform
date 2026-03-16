@@ -8,7 +8,7 @@ ACTION_ID = "transfer"
 ACTION_RULE = {'allowed_in_states': ['collected', 'stored', 'examined', 'transferred'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['chain_of_custody_event', 'forensic_examination', 'device_image_record'], 'borrowed_fields': ['source-system or device context from integration/platform docs'], 'inferred_roles': ['auditor']}, 'actors': ['auditor'], 'action_actors': {'create': ['auditor'], 'archive': ['auditor']}}
 
 def handle_transfer(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

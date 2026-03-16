@@ -8,7 +8,7 @@ ACTION_ID = "complete"
 ACTION_RULE = {'allowed_in_states': ['opened', 'in_review', 'completed'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['asset_trace_case', 'reconstruction_entry', 'journal_entry'], 'borrowed_fields': ['trace', 'account context from linked records'], 'inferred_roles': ['auditor', 'finance officer', 'case owner']}, 'actors': ['auditor', 'finance officer', 'case owner'], 'action_actors': {'create': ['auditor'], 'review': ['auditor'], 'archive': ['case owner']}}
 
 def handle_complete(payload: dict, context: dict | None = None) -> dict:
     context = context or {}
