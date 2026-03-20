@@ -8,5 +8,2431 @@
     "id": "CUSTOM-PROPRIETARY",
     "type": "proprietary_custom",
     "terms_ref": "LICENSE"
+  },
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "app",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "modules",
+      "flatten_submodules_in_ui": false
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "My Plug App KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "investigation_forensics_platform",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "My Plug App summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "investigation_forensics_platform",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "My Plug App charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "investigation_forensics_platform",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "investigation_forensics_platform_trend_line",
+            "label": "My Plug App trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_forensics_platform_volume_column",
+            "label": "My Plug App volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_forensics_platform_distribution_donut",
+            "label": "My Plug App distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "compliance_audit_investigations_trend_line",
+            "label": "Compliance Audit Investigations trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "compliance_audit_investigations_volume_column",
+            "label": "Compliance Audit Investigations volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "compliance_audit_investigations_distribution_donut",
+            "label": "Compliance Audit Investigations distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "investigation_case_trend_line",
+            "label": "Investigation Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_case_volume_column",
+            "label": "Investigation Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_case_distribution_donut",
+            "label": "Investigation Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "investigation_interview_record_trend_line",
+            "label": "Investigation Interview Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_interview_record_volume_column",
+            "label": "Investigation Interview Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_interview_record_distribution_donut",
+            "label": "Investigation Interview Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "investigation_report_trend_line",
+            "label": "Investigation Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_report_volume_column",
+            "label": "Investigation Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_report_distribution_donut",
+            "label": "Investigation Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "remediation_case_trend_line",
+            "label": "Remediation Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "remediation_case_volume_column",
+            "label": "Remediation Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "remediation_case_distribution_donut",
+            "label": "Remediation Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "digital_forensics_trend_line",
+            "label": "Digital Forensics trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "digital_forensics_volume_column",
+            "label": "Digital Forensics volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "digital_forensics_distribution_donut",
+            "label": "Digital Forensics distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "chain_of_custody_event_trend_line",
+            "label": "Chain Of Custody Event trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "chain_of_custody_event_volume_column",
+            "label": "Chain Of Custody Event volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "chain_of_custody_event_distribution_donut",
+            "label": "Chain Of Custody Event distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "evidence_item_trend_line",
+            "label": "Evidence Item trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "evidence_item_volume_column",
+            "label": "Evidence Item volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "evidence_item_distribution_donut",
+            "label": "Evidence Item distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "device_image_record_trend_line",
+            "label": "Device Image Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "device_image_record_volume_column",
+            "label": "Device Image Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "device_image_record_distribution_donut",
+            "label": "Device Image Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forensic_examination_trend_line",
+            "label": "Forensic Examination trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forensic_examination_volume_column",
+            "label": "Forensic Examination volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forensic_examination_distribution_donut",
+            "label": "Forensic Examination distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forensic_accounting_trend_line",
+            "label": "Forensic Accounting trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forensic_accounting_volume_column",
+            "label": "Forensic Accounting volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forensic_accounting_distribution_donut",
+            "label": "Forensic Accounting distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "asset_trace_case_trend_line",
+            "label": "Asset Trace Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "asset_trace_case_volume_column",
+            "label": "Asset Trace Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "asset_trace_case_distribution_donut",
+            "label": "Asset Trace Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forensic_ledger_review_trend_line",
+            "label": "Forensic Ledger Review trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forensic_ledger_review_volume_column",
+            "label": "Forensic Ledger Review volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forensic_ledger_review_distribution_donut",
+            "label": "Forensic Ledger Review distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "reconstruction_entry_trend_line",
+            "label": "Reconstruction Entry trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "reconstruction_entry_volume_column",
+            "label": "Reconstruction Entry volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "reconstruction_entry_distribution_donut",
+            "label": "Reconstruction Entry distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "fraud_investigation_trend_line",
+            "label": "Fraud Investigation trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "fraud_investigation_volume_column",
+            "label": "Fraud Investigation volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "fraud_investigation_distribution_donut",
+            "label": "Fraud Investigation distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "fraud_case_trend_line",
+            "label": "Fraud Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "fraud_case_volume_column",
+            "label": "Fraud Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "fraud_case_distribution_donut",
+            "label": "Fraud Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "suspicious_pattern_alert_trend_line",
+            "label": "Suspicious Pattern Alert trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "suspicious_pattern_alert_volume_column",
+            "label": "Suspicious Pattern Alert volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "suspicious_pattern_alert_distribution_donut",
+            "label": "Suspicious Pattern Alert distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "transaction_trace_record_trend_line",
+            "label": "Transaction Trace Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "transaction_trace_record_volume_column",
+            "label": "Transaction Trace Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "transaction_trace_record_distribution_donut",
+            "label": "Transaction Trace Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_analysis_trend_line",
+            "label": "Log Analysis trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_analysis_volume_column",
+            "label": "Log Analysis volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_analysis_distribution_donut",
+            "label": "Log Analysis distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_finding_record_trend_line",
+            "label": "Log Finding Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_finding_record_volume_column",
+            "label": "Log Finding Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_finding_record_distribution_donut",
+            "label": "Log Finding Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_search_case_trend_line",
+            "label": "Log Search Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_search_case_volume_column",
+            "label": "Log Search Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_search_case_distribution_donut",
+            "label": "Log Search Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_source_binding_trend_line",
+            "label": "Log Source Binding trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_source_binding_volume_column",
+            "label": "Log Source Binding volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_source_binding_distribution_donut",
+            "label": "Log Source Binding distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "My Plug App reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "investigation_forensics_platform",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "investigation_forensics_platform",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "investigation_forensics_platform",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "investigation_forensics_platform",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "investigation_forensics_platform",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "My Plug App Overview",
+        "report_type": "dashboard_summary",
+        "surface": "app"
+      },
+      {
+        "id": "trend_report",
+        "label": "My Plug App Trends",
+        "report_type": "trend_analysis",
+        "surface": "app"
+      },
+      {
+        "id": "summary_report",
+        "label": "Investigation Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Investigation Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "investigation_forensics_platform_trend_line",
+        "label": "My Plug App trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_forensics_platform_volume_column",
+        "label": "My Plug App volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_forensics_platform_distribution_donut",
+        "label": "My Plug App distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "compliance_audit_investigations_trend_line",
+        "label": "Compliance Audit Investigations trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "compliance_audit_investigations_volume_column",
+        "label": "Compliance Audit Investigations volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "compliance_audit_investigations_distribution_donut",
+        "label": "Compliance Audit Investigations distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "investigation_case_trend_line",
+        "label": "Investigation Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_case_volume_column",
+        "label": "Investigation Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_case_distribution_donut",
+        "label": "Investigation Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "investigation_interview_record_trend_line",
+        "label": "Investigation Interview Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_interview_record_volume_column",
+        "label": "Investigation Interview Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_interview_record_distribution_donut",
+        "label": "Investigation Interview Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "investigation_report_trend_line",
+        "label": "Investigation Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_report_volume_column",
+        "label": "Investigation Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_report_distribution_donut",
+        "label": "Investigation Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "remediation_case_trend_line",
+        "label": "Remediation Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "remediation_case_volume_column",
+        "label": "Remediation Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "remediation_case_distribution_donut",
+        "label": "Remediation Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "digital_forensics_trend_line",
+        "label": "Digital Forensics trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "digital_forensics_volume_column",
+        "label": "Digital Forensics volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "digital_forensics_distribution_donut",
+        "label": "Digital Forensics distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "chain_of_custody_event_trend_line",
+        "label": "Chain Of Custody Event trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "chain_of_custody_event_volume_column",
+        "label": "Chain Of Custody Event volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "chain_of_custody_event_distribution_donut",
+        "label": "Chain Of Custody Event distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "evidence_item_trend_line",
+        "label": "Evidence Item trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "evidence_item_volume_column",
+        "label": "Evidence Item volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "evidence_item_distribution_donut",
+        "label": "Evidence Item distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "device_image_record_trend_line",
+        "label": "Device Image Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "device_image_record_volume_column",
+        "label": "Device Image Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "device_image_record_distribution_donut",
+        "label": "Device Image Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forensic_examination_trend_line",
+        "label": "Forensic Examination trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forensic_examination_volume_column",
+        "label": "Forensic Examination volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forensic_examination_distribution_donut",
+        "label": "Forensic Examination distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forensic_accounting_trend_line",
+        "label": "Forensic Accounting trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forensic_accounting_volume_column",
+        "label": "Forensic Accounting volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forensic_accounting_distribution_donut",
+        "label": "Forensic Accounting distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "asset_trace_case_trend_line",
+        "label": "Asset Trace Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "asset_trace_case_volume_column",
+        "label": "Asset Trace Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "asset_trace_case_distribution_donut",
+        "label": "Asset Trace Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forensic_ledger_review_trend_line",
+        "label": "Forensic Ledger Review trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forensic_ledger_review_volume_column",
+        "label": "Forensic Ledger Review volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forensic_ledger_review_distribution_donut",
+        "label": "Forensic Ledger Review distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "reconstruction_entry_trend_line",
+        "label": "Reconstruction Entry trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "reconstruction_entry_volume_column",
+        "label": "Reconstruction Entry volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "reconstruction_entry_distribution_donut",
+        "label": "Reconstruction Entry distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "fraud_investigation_trend_line",
+        "label": "Fraud Investigation trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "fraud_investigation_volume_column",
+        "label": "Fraud Investigation volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "fraud_investigation_distribution_donut",
+        "label": "Fraud Investigation distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "fraud_case_trend_line",
+        "label": "Fraud Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "fraud_case_volume_column",
+        "label": "Fraud Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "fraud_case_distribution_donut",
+        "label": "Fraud Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "suspicious_pattern_alert_trend_line",
+        "label": "Suspicious Pattern Alert trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "suspicious_pattern_alert_volume_column",
+        "label": "Suspicious Pattern Alert volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "suspicious_pattern_alert_distribution_donut",
+        "label": "Suspicious Pattern Alert distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "transaction_trace_record_trend_line",
+        "label": "Transaction Trace Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "transaction_trace_record_volume_column",
+        "label": "Transaction Trace Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "transaction_trace_record_distribution_donut",
+        "label": "Transaction Trace Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_analysis_trend_line",
+        "label": "Log Analysis trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_analysis_volume_column",
+        "label": "Log Analysis volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_analysis_distribution_donut",
+        "label": "Log Analysis distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_finding_record_trend_line",
+        "label": "Log Finding Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_finding_record_volume_column",
+        "label": "Log Finding Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_finding_record_distribution_donut",
+        "label": "Log Finding Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_search_case_trend_line",
+        "label": "Log Search Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_search_case_volume_column",
+        "label": "Log Search Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_search_case_distribution_donut",
+        "label": "Log Search Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_source_binding_trend_line",
+        "label": "Log Source Binding trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_source_binding_volume_column",
+        "label": "Log Source Binding volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_source_binding_distribution_donut",
+        "label": "Log Source Binding distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "compliance_audit_investigations",
+        "title": "Compliance Audit Investigations",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "digital_forensics",
+        "title": "Digital Forensics",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "forensic_accounting",
+        "title": "Forensic Accounting",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "fraud_investigation",
+        "title": "Fraud Investigation",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "log_analysis",
+        "title": "Log Analysis",
+        "surface": "module",
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "investigation_interview_record",
+      "investigation_report",
+      "remediation_case",
+      "audit_engagement",
+      "investigation_case",
+      "corrective_action_plan",
+      "evidence_item",
+      "forensic_examination",
+      "chain_of_custody_event",
+      "device_image_record",
+      "reconstruction_entry",
+      "forensic_ledger_review",
+      "fraud_case",
+      "asset_trace_case",
+      "journal_entry",
+      "ledger_posting",
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "anomaly_alert",
+      "payment_log_entry",
+      "inventory_movement",
+      "log_search_case",
+      "log_source_binding",
+      "log_finding_record"
+    ],
+    "upstream_docs": [
+      "investigation_interview_record",
+      "investigation_report",
+      "remediation_case",
+      "audit_engagement",
+      "investigation_case",
+      "corrective_action_plan",
+      "evidence_item",
+      "forensic_examination",
+      "chain_of_custody_event",
+      "device_image_record",
+      "reconstruction_entry",
+      "forensic_ledger_review",
+      "fraud_case",
+      "asset_trace_case",
+      "journal_entry",
+      "ledger_posting",
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "anomaly_alert",
+      "payment_log_entry",
+      "inventory_movement",
+      "log_search_case",
+      "log_source_binding",
+      "log_finding_record"
+    ],
+    "downstream_docs": [
+      "remediation_case",
+      "investigation_case",
+      "fraud_case",
+      "transaction_trace_record",
+      "chargeback_case",
+      "log_finding_record"
+    ],
+    "actors": [
+      "auditor",
+      "compliance officer",
+      "case owner",
+      "finance officer",
+      "operations coordinator"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "close",
+        "target_doc": "remediation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "remediation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "issue",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "fraud_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "fraud_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "confirm",
+        "target_doc": "transaction_trace_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "chargeback_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "chargeback_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "log_finding_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "investigation_interview_record",
+      "investigation_report",
+      "remediation_case",
+      "audit_engagement",
+      "investigation_case",
+      "corrective_action_plan",
+      "evidence_item",
+      "forensic_examination",
+      "chain_of_custody_event",
+      "device_image_record",
+      "reconstruction_entry",
+      "forensic_ledger_review",
+      "fraud_case",
+      "asset_trace_case",
+      "journal_entry",
+      "ledger_posting",
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "anomaly_alert",
+      "payment_log_entry",
+      "inventory_movement",
+      "log_search_case",
+      "log_source_binding",
+      "log_finding_record"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "investigation_interview_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "investigation_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "remediation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "audit_engagement",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "remediation_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "remediation_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "investigation_interview_record",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_interview_record",
+        "target_doc": "investigation_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_interview_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "remediation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "issue"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "corrective_action_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "chain_of_custody_event",
+        "target_doc": "evidence_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "chain_of_custody_event",
+        "target_doc": "forensic_examination",
+        "relation": "references"
+      },
+      {
+        "source_doc": "evidence_item",
+        "target_doc": "chain_of_custody_event",
+        "relation": "references"
+      },
+      {
+        "source_doc": "evidence_item",
+        "target_doc": "forensic_examination",
+        "relation": "references"
+      },
+      {
+        "source_doc": "evidence_item",
+        "target_doc": "device_image_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "device_image_record",
+        "target_doc": "evidence_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "device_image_record",
+        "target_doc": "forensic_examination",
+        "relation": "references"
+      },
+      {
+        "source_doc": "device_image_record",
+        "target_doc": "chain_of_custody_event",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_examination",
+        "target_doc": "evidence_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_examination",
+        "target_doc": "chain_of_custody_event",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_examination",
+        "target_doc": "device_image_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_examination",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_examination",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "forensic_examination",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "reconstruction_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "forensic_ledger_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "asset_trace_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "reconstruction_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "journal_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "reconstruction_entry",
+        "target_doc": "asset_trace_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "reconstruction_entry",
+        "target_doc": "forensic_ledger_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "reconstruction_entry",
+        "target_doc": "ledger_posting",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "transaction_trace_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "suspicious_pattern_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "fraud_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "transaction_trace_record",
+        "relation": "create_record",
+        "action_id": "confirm"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "suspicious_pattern_alert",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "suspicious_pattern_alert",
+        "target_doc": "anomaly_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "suspicious_pattern_alert",
+        "target_doc": "fraud_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "payment_log_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "ledger_posting",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "inventory_movement",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_finding_record",
+        "target_doc": "log_search_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_finding_record",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_finding_record",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "log_source_binding",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "log_finding_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "log_source_binding",
+        "target_doc": "log_search_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_source_binding",
+        "target_doc": "log_finding_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_source_binding",
+        "target_doc": "log_finding_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "compliance_audit_investigations",
+          "kind": "module",
+          "title": "Compliance Audit Investigations"
+        },
+        {
+          "id": "digital_forensics",
+          "kind": "module",
+          "title": "Digital Forensics"
+        },
+        {
+          "id": "forensic_accounting",
+          "kind": "module",
+          "title": "Forensic Accounting"
+        },
+        {
+          "id": "fraud_investigation",
+          "kind": "module",
+          "title": "Fraud Investigation"
+        },
+        {
+          "id": "log_analysis",
+          "kind": "module",
+          "title": "Log Analysis"
+        },
+        {
+          "id": "investigation_interview_record",
+          "kind": "doc"
+        },
+        {
+          "id": "investigation_report",
+          "kind": "doc"
+        },
+        {
+          "id": "remediation_case",
+          "kind": "doc"
+        },
+        {
+          "id": "audit_engagement",
+          "kind": "doc"
+        },
+        {
+          "id": "investigation_case",
+          "kind": "doc"
+        },
+        {
+          "id": "corrective_action_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "evidence_item",
+          "kind": "doc"
+        },
+        {
+          "id": "forensic_examination",
+          "kind": "doc"
+        },
+        {
+          "id": "chain_of_custody_event",
+          "kind": "doc"
+        },
+        {
+          "id": "device_image_record",
+          "kind": "doc"
+        },
+        {
+          "id": "reconstruction_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "forensic_ledger_review",
+          "kind": "doc"
+        },
+        {
+          "id": "fraud_case",
+          "kind": "doc"
+        },
+        {
+          "id": "asset_trace_case",
+          "kind": "doc"
+        },
+        {
+          "id": "journal_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "ledger_posting",
+          "kind": "doc"
+        },
+        {
+          "id": "transaction_trace_record",
+          "kind": "doc"
+        },
+        {
+          "id": "suspicious_pattern_alert",
+          "kind": "doc"
+        },
+        {
+          "id": "fraud_alert",
+          "kind": "doc"
+        },
+        {
+          "id": "chargeback_case",
+          "kind": "doc"
+        },
+        {
+          "id": "anomaly_alert",
+          "kind": "doc"
+        },
+        {
+          "id": "payment_log_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "inventory_movement",
+          "kind": "doc"
+        },
+        {
+          "id": "log_search_case",
+          "kind": "doc"
+        },
+        {
+          "id": "log_source_binding",
+          "kind": "doc"
+        },
+        {
+          "id": "log_finding_record",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "investigation_interview_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "investigation_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "remediation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "audit_engagement",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "remediation_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "remediation_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "investigation_interview_record",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_interview_record",
+          "target_doc": "investigation_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_interview_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "remediation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "issue"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "corrective_action_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "chain_of_custody_event",
+          "target_doc": "evidence_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "chain_of_custody_event",
+          "target_doc": "forensic_examination",
+          "relation": "references"
+        },
+        {
+          "source_doc": "evidence_item",
+          "target_doc": "chain_of_custody_event",
+          "relation": "references"
+        },
+        {
+          "source_doc": "evidence_item",
+          "target_doc": "forensic_examination",
+          "relation": "references"
+        },
+        {
+          "source_doc": "evidence_item",
+          "target_doc": "device_image_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "device_image_record",
+          "target_doc": "evidence_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "device_image_record",
+          "target_doc": "forensic_examination",
+          "relation": "references"
+        },
+        {
+          "source_doc": "device_image_record",
+          "target_doc": "chain_of_custody_event",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_examination",
+          "target_doc": "evidence_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_examination",
+          "target_doc": "chain_of_custody_event",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_examination",
+          "target_doc": "device_image_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_examination",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_examination",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "forensic_examination",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "reconstruction_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "forensic_ledger_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "fraud_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "fraud_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "forensic_ledger_review",
+          "target_doc": "asset_trace_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_ledger_review",
+          "target_doc": "reconstruction_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_ledger_review",
+          "target_doc": "journal_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "reconstruction_entry",
+          "target_doc": "asset_trace_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "reconstruction_entry",
+          "target_doc": "forensic_ledger_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "reconstruction_entry",
+          "target_doc": "ledger_posting",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "transaction_trace_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "suspicious_pattern_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "fraud_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "chargeback_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "transaction_trace_record",
+          "relation": "create_record",
+          "action_id": "confirm"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "chargeback_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "chargeback_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "suspicious_pattern_alert",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "suspicious_pattern_alert",
+          "target_doc": "anomaly_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "suspicious_pattern_alert",
+          "target_doc": "fraud_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "payment_log_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "ledger_posting",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "inventory_movement",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_finding_record",
+          "target_doc": "log_search_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_finding_record",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_finding_record",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "log_source_binding",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "log_finding_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "fraud_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "log_source_binding",
+          "target_doc": "log_search_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_source_binding",
+          "target_doc": "log_finding_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_source_binding",
+          "target_doc": "log_finding_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        }
+      ]
+    }
   }
 }

@@ -10,7 +10,8 @@
   "doc_archetype": "workflow_case",
   "classification": {
     "archetype": "workflow_case",
-    "bundle": "platform"
+    "bundle": "platform",
+    "doc_kind": "workflow_case"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -23,5 +24,299 @@
       "case-type taxonomy",
       "evidence standard"
     ]
+  },
+  "ui": {
+    "icon_key": "checklist",
+    "accent": "#2d6a4f",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Fraud Case KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "fraud_case",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Fraud Case summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "fraud_case",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Fraud Case charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "fraud_case",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Fraud Case reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "fraud_case",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Fraud Case records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "fraud_case",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "fraud_case",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "fraud_case",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "fraud_case",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "fraud_case",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Fraud Case Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Fraud Case Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Fraud Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Fraud Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "fraud_case_trend_line",
+        "label": "Fraud Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "fraud_case_volume_column",
+        "label": "Fraud Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "fraud_case_distribution_donut",
+        "label": "Fraud Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case"
+    ],
+    "downstream_docs": [
+      "transaction_trace_record",
+      "chargeback_case"
+    ],
+    "borrowed_fields": [
+      "source alert/transaction context from linked fraud/payment docs"
+    ],
+    "emits_records": [
+      {
+        "action_id": "confirm",
+        "target_doc": "transaction_trace_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "chargeback_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "chargeback_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "downstream_effects": [],
+    "actors": [
+      "auditor",
+      "finance officer",
+      "case owner"
+    ],
+    "handoff_targets": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "transaction_trace_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "suspicious_pattern_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "fraud_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "transaction_trace_record",
+        "relation": "create_record",
+        "action_id": "confirm"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      }
+    ]
+  },
+  "contract_version": 1,
+  "records_profile": {
+    "record_class": "business_record",
+    "legal_significance": "standard",
+    "confidentiality": "internal",
+    "official_copy_format": "pdf",
+    "evidence_gaps": []
   }
 }

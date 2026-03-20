@@ -4,5 +4,735 @@
   "app_id": "investigation_forensics_platform",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Compliance Audit Investigations KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "compliance_audit_investigations",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Compliance Audit Investigations summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "compliance_audit_investigations",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Compliance Audit Investigations charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "compliance_audit_investigations",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "compliance_audit_investigations_trend_line",
+            "label": "Compliance Audit Investigations trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "compliance_audit_investigations_volume_column",
+            "label": "Compliance Audit Investigations volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "compliance_audit_investigations_distribution_donut",
+            "label": "Compliance Audit Investigations distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "investigation_case_trend_line",
+            "label": "Investigation Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_case_volume_column",
+            "label": "Investigation Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_case_distribution_donut",
+            "label": "Investigation Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "investigation_interview_record_trend_line",
+            "label": "Investigation Interview Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_interview_record_volume_column",
+            "label": "Investigation Interview Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_interview_record_distribution_donut",
+            "label": "Investigation Interview Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "investigation_report_trend_line",
+            "label": "Investigation Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "investigation_report_volume_column",
+            "label": "Investigation Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "investigation_report_distribution_donut",
+            "label": "Investigation Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "remediation_case_trend_line",
+            "label": "Remediation Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "remediation_case_volume_column",
+            "label": "Remediation Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "remediation_case_distribution_donut",
+            "label": "Remediation Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Compliance Audit Investigations reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "compliance_audit_investigations",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "compliance_audit_investigations",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "compliance_audit_investigations",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "compliance_audit_investigations",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "compliance_audit_investigations",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Compliance Audit Investigations Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Compliance Audit Investigations Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Investigation Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Investigation Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "compliance_audit_investigations_trend_line",
+        "label": "Compliance Audit Investigations trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "compliance_audit_investigations_volume_column",
+        "label": "Compliance Audit Investigations volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "compliance_audit_investigations_distribution_donut",
+        "label": "Compliance Audit Investigations distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "investigation_case_trend_line",
+        "label": "Investigation Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_case_volume_column",
+        "label": "Investigation Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_case_distribution_donut",
+        "label": "Investigation Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "investigation_interview_record_trend_line",
+        "label": "Investigation Interview Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_interview_record_volume_column",
+        "label": "Investigation Interview Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_interview_record_distribution_donut",
+        "label": "Investigation Interview Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "investigation_report_trend_line",
+        "label": "Investigation Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "investigation_report_volume_column",
+        "label": "Investigation Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "investigation_report_distribution_donut",
+        "label": "Investigation Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "remediation_case_trend_line",
+        "label": "Remediation Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "remediation_case_volume_column",
+        "label": "Remediation Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "remediation_case_distribution_donut",
+        "label": "Remediation Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "investigation_case",
+        "title": "Investigation Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "investigation_interview_record",
+        "title": "Investigation Interview Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "investigation_report",
+        "title": "Investigation Report",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "remediation_case",
+        "title": "Remediation Case",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "investigation_interview_record",
+      "investigation_report",
+      "remediation_case",
+      "audit_engagement",
+      "investigation_case",
+      "corrective_action_plan"
+    ],
+    "upstream_docs": [
+      "investigation_interview_record",
+      "investigation_report",
+      "remediation_case",
+      "audit_engagement",
+      "investigation_case",
+      "corrective_action_plan"
+    ],
+    "downstream_docs": [
+      "remediation_case",
+      "investigation_case"
+    ],
+    "actors": [
+      "auditor",
+      "compliance officer",
+      "case owner"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "close",
+        "target_doc": "remediation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "remediation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "issue",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "investigation_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "investigation_interview_record",
+      "investigation_report",
+      "remediation_case",
+      "audit_engagement",
+      "investigation_case",
+      "corrective_action_plan"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "investigation_interview_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "investigation_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "remediation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "audit_engagement",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "remediation_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "investigation_case",
+        "target_doc": "remediation_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "investigation_interview_record",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_interview_record",
+        "target_doc": "investigation_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_interview_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "remediation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "investigation_report",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "issue"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "corrective_action_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "remediation_case",
+        "target_doc": "investigation_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "investigation_interview_record",
+          "kind": "doc"
+        },
+        {
+          "id": "investigation_report",
+          "kind": "doc"
+        },
+        {
+          "id": "remediation_case",
+          "kind": "doc"
+        },
+        {
+          "id": "audit_engagement",
+          "kind": "doc"
+        },
+        {
+          "id": "investigation_case",
+          "kind": "doc"
+        },
+        {
+          "id": "corrective_action_plan",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "investigation_interview_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "investigation_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "remediation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "audit_engagement",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "remediation_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "investigation_case",
+          "target_doc": "remediation_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "investigation_interview_record",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_interview_record",
+          "target_doc": "investigation_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_interview_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "remediation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "investigation_report",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "issue"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "corrective_action_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "remediation_case",
+          "target_doc": "investigation_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

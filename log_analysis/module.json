@@ -4,5 +4,569 @@
   "app_id": "investigation_forensics_platform",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Log Analysis KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "log_analysis",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Log Analysis summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "log_analysis",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Log Analysis charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "log_analysis",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "log_analysis_trend_line",
+            "label": "Log Analysis trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_analysis_volume_column",
+            "label": "Log Analysis volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_analysis_distribution_donut",
+            "label": "Log Analysis distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_finding_record_trend_line",
+            "label": "Log Finding Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_finding_record_volume_column",
+            "label": "Log Finding Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_finding_record_distribution_donut",
+            "label": "Log Finding Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_search_case_trend_line",
+            "label": "Log Search Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_search_case_volume_column",
+            "label": "Log Search Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_search_case_distribution_donut",
+            "label": "Log Search Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "log_source_binding_trend_line",
+            "label": "Log Source Binding trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "log_source_binding_volume_column",
+            "label": "Log Source Binding volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "log_source_binding_distribution_donut",
+            "label": "Log Source Binding distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Log Analysis reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "log_analysis",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "log_analysis",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "log_analysis",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "log_analysis",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "log_analysis",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Log Analysis Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Log Analysis Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Log Finding Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Log Finding Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "log_analysis_trend_line",
+        "label": "Log Analysis trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_analysis_volume_column",
+        "label": "Log Analysis volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_analysis_distribution_donut",
+        "label": "Log Analysis distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_finding_record_trend_line",
+        "label": "Log Finding Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_finding_record_volume_column",
+        "label": "Log Finding Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_finding_record_distribution_donut",
+        "label": "Log Finding Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_search_case_trend_line",
+        "label": "Log Search Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_search_case_volume_column",
+        "label": "Log Search Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_search_case_distribution_donut",
+        "label": "Log Search Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "log_source_binding_trend_line",
+        "label": "Log Source Binding trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_source_binding_volume_column",
+        "label": "Log Source Binding volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_source_binding_distribution_donut",
+        "label": "Log Source Binding distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "log_finding_record",
+        "title": "Log Finding Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "log_search_case",
+        "title": "Log Search Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "log_source_binding",
+        "title": "Log Source Binding",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "log_search_case",
+      "fraud_case",
+      "investigation_case",
+      "log_source_binding",
+      "log_finding_record"
+    ],
+    "upstream_docs": [
+      "log_search_case",
+      "fraud_case",
+      "investigation_case",
+      "log_source_binding",
+      "log_finding_record"
+    ],
+    "downstream_docs": [
+      "fraud_case",
+      "log_finding_record"
+    ],
+    "actors": [
+      "auditor",
+      "case owner"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "assign",
+        "target_doc": "fraud_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "log_finding_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "log_search_case",
+      "fraud_case",
+      "investigation_case",
+      "log_source_binding",
+      "log_finding_record"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "log_finding_record",
+        "target_doc": "log_search_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_finding_record",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_finding_record",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "log_source_binding",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "log_finding_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "log_source_binding",
+        "target_doc": "log_search_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_source_binding",
+        "target_doc": "log_finding_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_source_binding",
+        "target_doc": "log_finding_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "log_search_case",
+          "kind": "doc"
+        },
+        {
+          "id": "fraud_case",
+          "kind": "doc"
+        },
+        {
+          "id": "investigation_case",
+          "kind": "doc"
+        },
+        {
+          "id": "log_source_binding",
+          "kind": "doc"
+        },
+        {
+          "id": "log_finding_record",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "log_finding_record",
+          "target_doc": "log_search_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_finding_record",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_finding_record",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "log_source_binding",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "log_finding_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "investigation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_search_case",
+          "target_doc": "fraud_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "log_source_binding",
+          "target_doc": "log_search_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_source_binding",
+          "target_doc": "log_finding_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "log_source_binding",
+          "target_doc": "log_finding_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

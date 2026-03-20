@@ -4,5 +4,576 @@
   "app_id": "investigation_forensics_platform",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Forensic Accounting KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "forensic_accounting",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Forensic Accounting summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "forensic_accounting",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Forensic Accounting charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "forensic_accounting",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "forensic_accounting_trend_line",
+            "label": "Forensic Accounting trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forensic_accounting_volume_column",
+            "label": "Forensic Accounting volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forensic_accounting_distribution_donut",
+            "label": "Forensic Accounting distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "asset_trace_case_trend_line",
+            "label": "Asset Trace Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "asset_trace_case_volume_column",
+            "label": "Asset Trace Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "asset_trace_case_distribution_donut",
+            "label": "Asset Trace Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forensic_ledger_review_trend_line",
+            "label": "Forensic Ledger Review trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forensic_ledger_review_volume_column",
+            "label": "Forensic Ledger Review volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forensic_ledger_review_distribution_donut",
+            "label": "Forensic Ledger Review distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "reconstruction_entry_trend_line",
+            "label": "Reconstruction Entry trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "reconstruction_entry_volume_column",
+            "label": "Reconstruction Entry volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "reconstruction_entry_distribution_donut",
+            "label": "Reconstruction Entry distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Forensic Accounting reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "forensic_accounting",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "forensic_accounting",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "forensic_accounting",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "forensic_accounting",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "forensic_accounting",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Forensic Accounting Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Forensic Accounting Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Asset Trace Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Asset Trace Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "forensic_accounting_trend_line",
+        "label": "Forensic Accounting trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forensic_accounting_volume_column",
+        "label": "Forensic Accounting volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forensic_accounting_distribution_donut",
+        "label": "Forensic Accounting distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "asset_trace_case_trend_line",
+        "label": "Asset Trace Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "asset_trace_case_volume_column",
+        "label": "Asset Trace Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "asset_trace_case_distribution_donut",
+        "label": "Asset Trace Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forensic_ledger_review_trend_line",
+        "label": "Forensic Ledger Review trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forensic_ledger_review_volume_column",
+        "label": "Forensic Ledger Review volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forensic_ledger_review_distribution_donut",
+        "label": "Forensic Ledger Review distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "reconstruction_entry_trend_line",
+        "label": "Reconstruction Entry trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "reconstruction_entry_volume_column",
+        "label": "Reconstruction Entry volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "reconstruction_entry_distribution_donut",
+        "label": "Reconstruction Entry distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "asset_trace_case",
+        "title": "Asset Trace Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "forensic_ledger_review",
+        "title": "Forensic Ledger Review",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "reconstruction_entry",
+        "title": "Reconstruction Entry",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "reconstruction_entry",
+      "forensic_ledger_review",
+      "fraud_case",
+      "asset_trace_case",
+      "journal_entry",
+      "ledger_posting"
+    ],
+    "upstream_docs": [
+      "reconstruction_entry",
+      "forensic_ledger_review",
+      "fraud_case",
+      "asset_trace_case",
+      "journal_entry",
+      "ledger_posting"
+    ],
+    "downstream_docs": [
+      "fraud_case"
+    ],
+    "actors": [
+      "auditor",
+      "finance officer",
+      "case owner"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "close",
+        "target_doc": "fraud_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "fraud_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "reconstruction_entry",
+      "forensic_ledger_review",
+      "fraud_case",
+      "asset_trace_case",
+      "journal_entry",
+      "ledger_posting"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "reconstruction_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "forensic_ledger_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "asset_trace_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "asset_trace_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "reconstruction_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "journal_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "reconstruction_entry",
+        "target_doc": "asset_trace_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "reconstruction_entry",
+        "target_doc": "forensic_ledger_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "reconstruction_entry",
+        "target_doc": "ledger_posting",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "reconstruction_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "forensic_ledger_review",
+          "kind": "doc"
+        },
+        {
+          "id": "fraud_case",
+          "kind": "doc"
+        },
+        {
+          "id": "asset_trace_case",
+          "kind": "doc"
+        },
+        {
+          "id": "journal_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "ledger_posting",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "reconstruction_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "forensic_ledger_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "fraud_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "asset_trace_case",
+          "target_doc": "fraud_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "forensic_ledger_review",
+          "target_doc": "asset_trace_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_ledger_review",
+          "target_doc": "reconstruction_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forensic_ledger_review",
+          "target_doc": "journal_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "reconstruction_entry",
+          "target_doc": "asset_trace_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "reconstruction_entry",
+          "target_doc": "forensic_ledger_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "reconstruction_entry",
+          "target_doc": "ledger_posting",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

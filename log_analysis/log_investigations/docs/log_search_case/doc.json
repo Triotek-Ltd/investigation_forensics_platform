@@ -10,7 +10,8 @@
   "doc_archetype": "workflow_case",
   "classification": {
     "archetype": "workflow_case",
-    "bundle": "platform"
+    "bundle": "platform",
+    "doc_kind": "workflow_case"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -23,5 +24,275 @@
       "search-query preservation",
       "legal-hold rules"
     ]
+  },
+  "ui": {
+    "icon_key": "checklist",
+    "accent": "#2d6a4f",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Log Search Case KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "log_search_case",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Log Search Case summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "log_search_case",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Log Search Case charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "log_search_case",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Log Search Case reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "log_search_case",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Log Search Case records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "log_search_case",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "log_search_case",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "log_search_case",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "log_search_case",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "log_search_case",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Log Search Case Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Log Search Case Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Log Search Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Log Search Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "log_search_case_trend_line",
+        "label": "Log Search Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "log_search_case_volume_column",
+        "label": "Log Search Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "log_search_case_distribution_donut",
+        "label": "Log Search Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "log_source_binding",
+      "log_finding_record",
+      "fraud_case",
+      "investigation_case",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "log_source_binding",
+      "log_finding_record",
+      "fraud_case",
+      "investigation_case"
+    ],
+    "downstream_docs": [
+      "fraud_case"
+    ],
+    "borrowed_fields": [
+      "source-scope metadata from log_source_binding"
+    ],
+    "emits_records": [
+      {
+        "action_id": "assign",
+        "target_doc": "fraud_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "downstream_effects": [],
+    "actors": [
+      "auditor",
+      "case owner"
+    ],
+    "handoff_targets": [
+      "log_source_binding",
+      "log_finding_record",
+      "fraud_case",
+      "investigation_case"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "log_source_binding",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "log_finding_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "investigation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "log_search_case",
+        "target_doc": "fraud_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      }
+    ]
+  },
+  "contract_version": 1,
+  "records_profile": {
+    "record_class": "business_record",
+    "legal_significance": "standard",
+    "confidentiality": "internal",
+    "official_copy_format": "pdf",
+    "evidence_gaps": []
   }
 }

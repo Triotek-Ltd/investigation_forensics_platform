@@ -7,9 +7,9 @@ from core.services.relation_resolution import RelationResolutionService
 
 DOC_ID = "chain_of_custody_event"
 RELATED_DOCS = [{'doc_id': 'evidence_item', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'forensic_examination', 'relation_type': 'related', 'show_in_related_panel': True}]
-FETCH_RULES = []
+FETCH_RULES = [{'source_field': 'related_evidence_item', 'doc_id': 'evidence_item', 'mode': 'context'}]
 
-BORROWED_FIELDS = [{'description': 'evidence identity from evidence_item'}]
+BORROWED_FIELDS = [{'description': 'evidence identity from evidence_item'}, {'field_id': 'related_evidence_item', 'doc_id': 'evidence_item', 'description': 'Borrow context from evidence_item through related_evidence_item.'}]
 
 class RelationService:
     def _bridge(self, context: dict | None = None) -> RelationResolutionService | None:

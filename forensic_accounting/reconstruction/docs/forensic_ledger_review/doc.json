@@ -10,7 +10,8 @@
   "doc_archetype": "transaction",
   "classification": {
     "archetype": "transaction",
-    "bundle": "platform"
+    "bundle": "platform",
+    "doc_kind": "transaction"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -23,5 +24,255 @@
       "review-checklist schema",
       "linkage to legal/report outputs"
     ]
+  },
+  "ui": {
+    "icon_key": "receipt",
+    "accent": "#1f7a8c",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Forensic Ledger Review KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "forensic_ledger_review",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Forensic Ledger Review summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "forensic_ledger_review",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Forensic Ledger Review charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "forensic_ledger_review",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Forensic Ledger Review reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "forensic_ledger_review",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Forensic Ledger Review records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "forensic_ledger_review",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "forensic_ledger_review",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "forensic_ledger_review",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "forensic_ledger_review",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "forensic_ledger_review",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Forensic Ledger Review Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Forensic Ledger Review Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Forensic Ledger Review Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Forensic Ledger Review Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "forensic_ledger_review_trend_line",
+        "label": "Forensic Ledger Review trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forensic_ledger_review_volume_column",
+        "label": "Forensic Ledger Review volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forensic_ledger_review_distribution_donut",
+        "label": "Forensic Ledger Review distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "asset_trace_case",
+      "reconstruction_entry",
+      "journal_entry",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "asset_trace_case",
+      "reconstruction_entry",
+      "journal_entry"
+    ],
+    "downstream_docs": [],
+    "borrowed_fields": [
+      "trace",
+      "account context from linked records"
+    ],
+    "emits_records": [],
+    "downstream_effects": [],
+    "actors": [
+      "auditor",
+      "finance officer",
+      "case owner"
+    ],
+    "handoff_targets": [
+      "asset_trace_case",
+      "reconstruction_entry",
+      "journal_entry"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "asset_trace_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "reconstruction_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forensic_ledger_review",
+        "target_doc": "journal_entry",
+        "relation": "references"
+      }
+    ]
+  },
+  "contract_version": 1,
+  "records_profile": {
+    "record_class": "business_record",
+    "legal_significance": "standard",
+    "confidentiality": "internal",
+    "official_copy_format": "pdf",
+    "evidence_gaps": []
   }
 }

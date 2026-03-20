@@ -6,10 +6,10 @@ from core.services.relation_resolution import RelationResolutionService
 
 
 DOC_ID = "device_image_record"
-RELATED_DOCS = [{'doc_id': 'evidence_item', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'forensic_examination', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'chain_of_custody_event', 'relation_type': 'related', 'show_in_related_panel': True}]
-FETCH_RULES = []
+RELATED_DOCS = [{'doc_id': 'evidence_item', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'forensic_examination', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'chain_of_custody_event', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'party_record', 'relation_type': 'related', 'show_in_related_panel': True}]
+FETCH_RULES = [{'source_field': 'party', 'doc_id': 'party_record', 'mode': 'context'}, {'source_field': 'related_evidence_item', 'doc_id': 'evidence_item', 'mode': 'context'}]
 
-BORROWED_FIELDS = [{'description': 'source evidence context from evidence_item'}]
+BORROWED_FIELDS = [{'description': 'source evidence context from evidence_item'}, {'field_id': 'party', 'doc_id': 'party_record', 'description': 'Borrow context from party_record through party.'}, {'field_id': 'related_evidence_item', 'doc_id': 'evidence_item', 'description': 'Borrow context from evidence_item through related_evidence_item.'}]
 
 class RelationService:
     def _bridge(self, context: dict | None = None) -> RelationResolutionService | None:

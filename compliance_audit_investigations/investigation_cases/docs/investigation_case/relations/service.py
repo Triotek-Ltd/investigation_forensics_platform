@@ -6,7 +6,7 @@ from core.services.relation_resolution import RelationResolutionService
 
 
 DOC_ID = "investigation_case"
-RELATED_DOCS = [{'doc_id': 'investigation_interview_record', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'investigation_report', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'remediation_case', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'audit_engagement', 'relation_type': 'related', 'show_in_related_panel': True}]
+RELATED_DOCS = [{'doc_id': 'investigation_interview_record', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'investigation_report', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'remediation_case', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'audit_engagement', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'employee_record', 'relation_type': 'related', 'show_in_related_panel': True}]
 FETCH_RULES = []
 
 BORROWED_FIELDS = [{'description': 'source allegation or audit context from linked records'}]

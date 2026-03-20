@@ -4,5 +4,636 @@
   "app_id": "investigation_forensics_platform",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Fraud Investigation KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "fraud_investigation",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Fraud Investigation summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "fraud_investigation",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Fraud Investigation charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "fraud_investigation",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "fraud_investigation_trend_line",
+            "label": "Fraud Investigation trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "fraud_investigation_volume_column",
+            "label": "Fraud Investigation volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "fraud_investigation_distribution_donut",
+            "label": "Fraud Investigation distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "fraud_case_trend_line",
+            "label": "Fraud Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "fraud_case_volume_column",
+            "label": "Fraud Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "fraud_case_distribution_donut",
+            "label": "Fraud Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "suspicious_pattern_alert_trend_line",
+            "label": "Suspicious Pattern Alert trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "suspicious_pattern_alert_volume_column",
+            "label": "Suspicious Pattern Alert volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "suspicious_pattern_alert_distribution_donut",
+            "label": "Suspicious Pattern Alert distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "transaction_trace_record_trend_line",
+            "label": "Transaction Trace Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "transaction_trace_record_volume_column",
+            "label": "Transaction Trace Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "transaction_trace_record_distribution_donut",
+            "label": "Transaction Trace Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Fraud Investigation reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "fraud_investigation",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "fraud_investigation",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "fraud_investigation",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "fraud_investigation",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "fraud_investigation",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Fraud Investigation Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Fraud Investigation Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Fraud Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Fraud Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "fraud_investigation_trend_line",
+        "label": "Fraud Investigation trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "fraud_investigation_volume_column",
+        "label": "Fraud Investigation volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "fraud_investigation_distribution_donut",
+        "label": "Fraud Investigation distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "fraud_case_trend_line",
+        "label": "Fraud Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "fraud_case_volume_column",
+        "label": "Fraud Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "fraud_case_distribution_donut",
+        "label": "Fraud Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "suspicious_pattern_alert_trend_line",
+        "label": "Suspicious Pattern Alert trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "suspicious_pattern_alert_volume_column",
+        "label": "Suspicious Pattern Alert volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "suspicious_pattern_alert_distribution_donut",
+        "label": "Suspicious Pattern Alert distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "transaction_trace_record_trend_line",
+        "label": "Transaction Trace Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "transaction_trace_record_volume_column",
+        "label": "Transaction Trace Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "transaction_trace_record_distribution_donut",
+        "label": "Transaction Trace Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "fraud_case",
+        "title": "Fraud Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "suspicious_pattern_alert",
+        "title": "Suspicious Pattern Alert",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "transaction_trace_record",
+        "title": "Transaction Trace Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "fraud_case",
+      "anomaly_alert",
+      "payment_log_entry",
+      "ledger_posting",
+      "inventory_movement"
+    ],
+    "upstream_docs": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "fraud_case",
+      "anomaly_alert",
+      "payment_log_entry",
+      "ledger_posting",
+      "inventory_movement"
+    ],
+    "downstream_docs": [
+      "transaction_trace_record",
+      "chargeback_case"
+    ],
+    "actors": [
+      "auditor",
+      "finance officer",
+      "case owner",
+      "operations coordinator"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "confirm",
+        "target_doc": "transaction_trace_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "chargeback_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "chargeback_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "transaction_trace_record",
+      "suspicious_pattern_alert",
+      "fraud_alert",
+      "chargeback_case",
+      "fraud_case",
+      "anomaly_alert",
+      "payment_log_entry",
+      "ledger_posting",
+      "inventory_movement"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "transaction_trace_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "suspicious_pattern_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "fraud_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "transaction_trace_record",
+        "relation": "create_record",
+        "action_id": "confirm"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "fraud_case",
+        "target_doc": "chargeback_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "suspicious_pattern_alert",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "suspicious_pattern_alert",
+        "target_doc": "anomaly_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "suspicious_pattern_alert",
+        "target_doc": "fraud_alert",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "fraud_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "payment_log_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "ledger_posting",
+        "relation": "references"
+      },
+      {
+        "source_doc": "transaction_trace_record",
+        "target_doc": "inventory_movement",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "transaction_trace_record",
+          "kind": "doc"
+        },
+        {
+          "id": "suspicious_pattern_alert",
+          "kind": "doc"
+        },
+        {
+          "id": "fraud_alert",
+          "kind": "doc"
+        },
+        {
+          "id": "chargeback_case",
+          "kind": "doc"
+        },
+        {
+          "id": "fraud_case",
+          "kind": "doc"
+        },
+        {
+          "id": "anomaly_alert",
+          "kind": "doc"
+        },
+        {
+          "id": "payment_log_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "ledger_posting",
+          "kind": "doc"
+        },
+        {
+          "id": "inventory_movement",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "transaction_trace_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "suspicious_pattern_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "fraud_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "chargeback_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "transaction_trace_record",
+          "relation": "create_record",
+          "action_id": "confirm"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "chargeback_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "fraud_case",
+          "target_doc": "chargeback_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "suspicious_pattern_alert",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "suspicious_pattern_alert",
+          "target_doc": "anomaly_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "suspicious_pattern_alert",
+          "target_doc": "fraud_alert",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "fraud_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "payment_log_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "ledger_posting",
+          "relation": "references"
+        },
+        {
+          "source_doc": "transaction_trace_record",
+          "target_doc": "inventory_movement",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }
